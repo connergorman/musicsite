@@ -25,7 +25,10 @@ SECRET_KEY = "django-insecure-&#yv*z2e2vmv$62tzg+ng*1dkx-grvo9f1u43v@))a6icjwf2y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "automation.llama.home",
+    "10.0.10.122",
+        ]
 
 
 # Application definition
