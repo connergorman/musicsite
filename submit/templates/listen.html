@@ -1,5 +1,8 @@
-<form action="{% url 'listen' %}" method="post">
+{% load static %}
+
+<link rel="stylesheet" href={% static 'polls/listen_style.css' %}>
 {% csrf_token %}
-    {{ form|linebreaks }}
+    {{ form.as_p }}
+
 <input type="submit" value="Submit">
 </form>

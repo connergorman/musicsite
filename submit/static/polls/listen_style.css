@@ -1,0 +1,28 @@
+a:link, a:visited {
+  background-color: white;
+  color: white;
+  border: 2px solid green;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: green;
+  color: white;
+}
+input[type=text] {
+  width: 10%;
+  padding: 10px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  color: black;
+}
+body {
+  background: white url("images/background.jpg") no-repeat;
+  color: white;
+}
+p {
+  margin: 0
+}
