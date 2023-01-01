@@ -37,8 +37,6 @@ class Listen(models.Model):
     track_length = models.IntegerField(default=0)
     time_played = models.DateTimeField(default=dt.datetime.now, blank=True)
 
-
     def __str__(self):
         reply = "{time}: {track} - {artist} ({album})"
         return reply.format(time=self.time_played.strftime('%m/%d/%y %H:%M'), track=self.track_name, artist=self.artist_name, album=self.album_name)
-

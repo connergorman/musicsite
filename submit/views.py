@@ -1,13 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import ListenForm
+from .forms import ArtistForm
 # from .models import Listen
-from .submit_to_db import add_listen
+from .submit_to_db import add_listen, add_artist
 
 
 # Create your views here.
 def index(request):
     return render(request, 'index.html', {})
+
+
+def submit_artist(request):
+    if request.method == 'POST':
+        form = ArtistForm(request.POST)
+        if form.is_valid():
+            add_artist(form.cleaned_data)
+            return HttpResponse(str(form.cleaned_data))
 
 
 def submit_album(request):
