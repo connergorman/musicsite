@@ -8,7 +8,7 @@ from .submit_to_db import add_listen, add_artist
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html', {})
+    return render(request, 'submit/index.html', {})
 
 
 def submit_artist(request):
@@ -36,4 +36,4 @@ def submit_listen(request):
             return HttpResponse(str(form.cleaned_data))
     else:
         form = ListenForm()
-    return render(request, 'listen.html', {'form': form})
+    return render(request, 'submit/listen.html', {'form': form})

@@ -1,0 +1,7 @@
+{% load static %}
+
+<link rel="stylesheet" href={% static 'submit/style.css' %}>
+<a href="{% url 'submit album' %}">Submit Album</a>
+<a href="{% url 'submit track' %}">Submit Track</a>
+<a href="{% url 'listen' %}">Submit Listen</a>
+<iframe src="http://grafana.llama.home/d-solo/d8YF4xKVk/music-dashboard?orgId=1&panelId=4" width="450" height="200" frameborder="0"></iframe>

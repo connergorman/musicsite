@@ -1,6 +1,6 @@
 a:link, a:visited {
   background-color: white;
-  color: black;
+  color: white;
   border: 2px solid green;
   padding: 10px 20px;
   text-align: center;
@@ -14,10 +14,24 @@ a:hover, a:active {
 }
 input[type=text] {
   width: 100%;
-  padding: 12px 20px;
+  padding: 10px 10px;
   margin: 8px 0;
   box-sizing: border-box;
+  color: black;
+  border-radius:10px;
+}
+
+input[type=submit] {
+  border-radius:10px; 
+}
+form {
+    display: inline-block;
 }
 body {
-    background: white url("images/background.jpg") no-repeat;
+  background: white url("images/background.jpg") no-repeat;
+  color: white;
+  text-align: center;
+}
+p {
+  margin: 0
 }
