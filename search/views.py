@@ -14,15 +14,31 @@ class SearchView(TemplateView):
     template_name = "search/search.html"
 
 
-class ResultsView(ListView):
+def ResultsView(request):
     template_name = 'search/results.html'
     model = Album
-    def get_queryset(self):  # new
-        query = self.request.GET.get("q")
+    object_list = {}
+    if request.method == 'GET': 
+        query = request.GET.get("q")
         object_list = Album.objects.filter(
             Q(artist__name__icontains=query) | Q(album_name__icontains=query)
         )
-        return object_list
+        context = {'albums': object_list}
+        return render(request, template_name, context=context)
+    else:
+        album = request.POST.get('a')
+        context = { 'album' : album.album_name, 'artist' : album.artist.name }
+        return render(request, 'results.html', context)
+       
+def showTracks(request):
+    template_name = 'search/albums.html'
+    if request.method == 'POST':
+        choices = list(request.POST.items())[1:]
+        context = { 'albums' : choices }
+        return render(request, template_name, context)
+        
+
+
 
 
 #def search(request):

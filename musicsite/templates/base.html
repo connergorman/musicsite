@@ -1,0 +1,14 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Project</title>
+        <link rel="stylesheet" href={% static 'default_style.css' %}>
+    </head>
+
+    <body>
+    {% block content %}{% endblock content %}
+    </body>
+</html>
+
