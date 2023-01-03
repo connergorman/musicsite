@@ -2,9 +2,16 @@
 
 <h2 style="color:Tomato;">Selected Albums</h2>
 {% block content %}
-{{albums}}
-
-
+<ul>
+{% for album in albums %}
+<li> {{ album }} </li>
+<ul>
+  {% for track in album.tracks.all %}
+  <li> {{ track.track_name }} </li>
+  {% endfor %}
+</ul>
+{% endfor %}
+</ul>
 {% endblock %}
 
 

@@ -4,7 +4,7 @@
 <form action="{% url 'show tracks'%}" method="POST">
 {% csrf_token %}
 {% for album in albums %}
-<input type="checkbox" id="{{ album }}" value={{ album }} name="{{ album.album_name }}">
+<input type="checkbox" id="{{ album }}" value={{ album.artist.name }} name="{{ album.album_name }}">
   <label for="{{ album }}"> {{ album }} </label><br>
 {% endfor %}
 <button type="submit"> Select </button>

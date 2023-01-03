@@ -34,7 +34,12 @@ def showTracks(request):
     template_name = 'search/albums.html'
     if request.method == 'POST':
         choices = list(request.POST.items())[1:]
-        context = { 'albums' : choices }
+        albums = []
+        for a,b in choices:
+            albums.append(Album.objects.filter(Q(artist__name__icontains=b) & Q(album_name__icontains=a)).first())
+
+
+        context = { 'albums' : albums }
         return render(request, template_name, context)
         
 
