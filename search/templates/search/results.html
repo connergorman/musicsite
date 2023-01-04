@@ -1,12 +1,42 @@
 {% extends "base.html" %}
 
+{% load static %}
 {% block content %}
-<form action="{% url 'show tracks'%}" method="POST">
-{% csrf_token %}
-{% for album in albums %}
-<input type="checkbox" id="{{ album }}" value={{ album.artist.name }} name="{{ album.album_name }}">
-  <label for="{{ album }}"> {{ album }} </label><br>
-{% endfor %}
-<button type="submit"> Select </button>
-</form>
-{% endblock %}
+  <form action="{% url 'show tracks'%}" method="POST">
+    {% csrf_token %}
+    
+    <ol>
+
+    {% for album in albums %}
+    <li>
+    <label><input type="checkbox" id="sa_{{album.album_name}}" name="sa_{{ album.album_name }}" class="selectall" data-checkbox-name="{{album.album_name}}">
+
+      {{album}} </label>
+      <ol>
+        {% for track in album.tracks.all %}
+        <li> <label><input type="checkbox" class="checkme" id="{{ track.track_name }}" value="{{ track.track_name }}" name="{{ album.album_name }}" data-select-all="sa_{{ album.album_name}}"> 
+        {{track.track_name }} </label>
+          </li>
+        {% endfor %}
+      </ol>
+    </li>
+  {% endfor %}
+    </ol>
+  <button type="submit"> Select </button>
+  </form>
+
+  <script>
+    $(document).ready(function() {
+      $(':checkbox').on('change', function() {
+        // check children
+        $(this).closest('li').find(':checkbox').prop('checked', this.checked);  
+        // check parent if all children checked
+        var $ol = $(this).closest('ol');
+        var $siblings = $ol.find('> li > label > :checkbox');
+        var allChecked = $siblings.length == $siblings.filter(':checked').length;
+        $ol.closest('li').find('> label > :checkbox').prop('checked', allChecked);
+      });
+    });
+  </script>
+    
+{% endblock content %}

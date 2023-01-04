@@ -13,6 +13,9 @@ def index(request):
 class SearchView(TemplateView):
     template_name = "search/search.html"
 
+def testView(request):
+    return render(request, "search/test.html")
+
 
 def ResultsView(request):
     template_name = 'search/results.html'
